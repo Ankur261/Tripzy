@@ -6,6 +6,7 @@ import bodyParser from 'body-parser';
 import authRoutes from './routes/authRoutes.js';
 import flightRoutes from './routes/flightRoutes.js';
 import bookingRoutes from './routes/bookingRoutes.js';
+import feedbackRoutes from './routes/feedbackRoutes.js';
 
 
 dotenv.config();
@@ -17,6 +18,7 @@ app.use(bodyParser.json());
 app.use('/api/auth', authRoutes);
 app.use('/api/flights', flightRoutes);
 app.use('/api/bookings', bookingRoutes);
+app.use('/api/feedback', feedbackRoutes);
 
 
 const PORT = process.env.PORT || 3000;

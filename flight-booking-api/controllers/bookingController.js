@@ -18,7 +18,8 @@ export const bookFlight = (req, res) => {
 };
 
 export const getUserBookings = (req, res) => {
-  const user_id = req.user_Id;
+ const user_id = req.userId;
+ 
 
   const sql = `
     SELECT b.id, f.flight_name, f.origin, f.destination, f.departure_time, f.arrival_time, f.price
