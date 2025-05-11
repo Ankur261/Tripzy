@@ -10,7 +10,9 @@ export default {
       josefin: ['"Josefin Sans"', 'sans-serif'],
     },
     colors: {
-      brandBlue: '#000099',    
+      brandBlue: '#000099', 
+      footerbg:"#000076",
+      boldGreen:"#209326"   
     },
   },
   },

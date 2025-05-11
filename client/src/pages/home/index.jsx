@@ -1,7 +1,10 @@
 import { useState } from "react";
 import Marquee from "react-fast-marquee"
 import Navbar from '../../components/navbar/Navbar'
-import './style.css'
+import '../../assets/style/commonStyle.css';
+import Footer from './footer';
+
+
 export default function Home({ }) {
   return (
     <>
@@ -15,13 +18,14 @@ export default function Home({ }) {
       <Navbar />
       <div className="container mx-auto">
         <div className="mt-5">
-          <h1 className="font-josefin text-[2.65rem] tracking-[-0.05rem] leading-[3.25rem]">
-            Hi there, keep flying, keep saving, keep booking on <span className="text-green-500">Tripzy.in</span>
+          <h1 className="font-josefin text-[2.4rem] tracking-[-0.05rem] leading-[3.25rem]">
+            Hi there, keep flying, keep saving, keep booking on <span className="text-boldGreen">Tripzy.in</span>
           </h1>
         </div>
-        <div className="rounded-xl border border-red-50 h-200 bg-white">
+        <div className="rounded-xl border border-red-50 bg-white">
           <div className="flex flex-row rounded-t-xl bg-brandBlue justify-center h-9 items-center ">
-            <img src="assets/icons8-flight-100.png" className="size-5" alt="" />
+            {/* <img src="assets/icons8-flight-100.png" className="size-5" alt="" /> */}
+            <img src="/assets/icDottedPlane.svg" className="size-5 invert-[.92] sepia-[0] saturate-[74.7] hue-rotate-[55deg] brightness-[1.16] contrast-[1.07]" alt="" />
             <p className="text-white text-base m-3">
               Book a flight
             </p>
@@ -73,12 +77,28 @@ export default function Home({ }) {
 
             </div>
           </div>
-
-
           <div className="flex flex-row justify-center h-100 mb-3 cursor-pointer">
             <p className="font-bold bg-brandBlue px-5 py-1 rounded-full text-white">Search</p>
           </div>
         </div>
+        <div className="mt-5">
+        <h4 className="font-josefin text-[1.4rem] tracking-[-0.05rem] leading-[3.25rem]">
+            What's new?
+          </h4>
+          <h1 className="font-josefin text-[2rem] tracking-[-0.05rem] leading-[2.25rem]">
+           Find <span className="text-boldGreen">exclusive offers</span> and the best deals available
+           for you
+          </h1>
+        </div>
+      </div>
+      <div className="container mx-auto hidden md:block my-20">
+        <img src="/assets/home-image-1.png" alt="" />
+      </div>
+      <div className="container mx-auto block md:hidden my-12">
+        <img src="/assets/home-image-2.png" alt="" />
+      </div>
+      <div className="relative bottom-0 left-0 w-full">
+        <Footer/>
       </div>
     </>
 

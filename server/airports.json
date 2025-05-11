@@ -1,0 +1,12 @@
+[
+  { "name": "Indira Gandhi International Airport", "city": "Delhi", "code": "DEL" },
+  { "name": "Chhatrapati Shivaji Maharaj International Airport", "city": "Mumbai", "code": "BOM" },
+  { "name": "Kempegowda International Airport", "city": "Bangalore", "code": "BLR" },
+  { "name": "Rajiv Gandhi International Airport", "city": "Hyderabad", "code": "HYD" },
+  { "name": "Chennai International Airport", "city": "Chennai", "code": "MAA" },
+  { "name": "Netaji Subhas Chandra Bose International Airport", "city": "Kolkata", "code": "CCU" },
+  { "name": "Sardar Vallabhbhai Patel International Airport", "city": "Ahmedabad", "code": "AMD" },
+  { "name": "Cochin International Airport", "city": "Kochi", "code": "COK" },
+  { "name": "Goa International Airport", "city": "Goa", "code": "GOI" },
+  { "name": "Pune Airport", "city": "Pune", "code": "PNQ" }
+]

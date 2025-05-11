@@ -10,6 +10,7 @@ export default function Layout({ children }) {
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
+        minWidth:'100vw',
         minHeight: '100vh',
         margin:'0px'
       }}
