@@ -11,8 +11,6 @@ router.get('/', async (req, res) => {
   } catch (error) {                       
     res.status(500).json({ error: 'Failed to fetch airports' });
   }
-  const shuffled = shuffle(sampleFlights);
-  res.json(shuffled);
 });
 
 export default router;

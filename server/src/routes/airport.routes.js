@@ -8,7 +8,7 @@ const router = express.Router();
 router.get('/', async (req, res) => {
   console.log("hello")
   try {
-    const airports = await Airport.find(); // fetch from DB
+    const airports = await Airport.find();
     res.json(airports);
   } catch (err) {
     res.status(500).json({ error: 'Failed to fetch airports' });
