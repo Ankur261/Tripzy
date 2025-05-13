@@ -1,6 +1,10 @@
 import { useState } from 'react';
+import { checkEmail, register, logIn } from '../../services/auth.js'
+import { useLocation, useNavigate } from 'react-router-dom';
 
 export default function Auth() {
+  const navigate = useNavigate();
+  const location = useLocation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isExistingUser, setIsExistingUser] = useState(null);
@@ -15,27 +19,44 @@ export default function Auth() {
     receiveOffers: false
   });
 
-  const handleEmailSubmit = (e) => {
+  const handleEmailSubmit = async (e) => {
     e.preventDefault();
-    // In a real app, you would check with your backend if email exists
-    // For demo, we'll assume any email containing "existing" is an existing user
-    if (email.includes('existing')) {
+    const result = await checkEmail(email);
+    console.log(result)
+    if (result.exists) {
       setIsExistingUser(true);
     } else {
       setIsExistingUser(false);
     }
   };
 
-  const handleSignUpSubmit = (e) => {
+  const handleSignUpSubmit = async (e) => {
     e.preventDefault();
-    // Handle sign up logic here
-    console.log('Signing up with:', signUpData);
+    const body = {
+      "email": email,
+      "password": password,
+      "fName": signUpData.firstName,
+      "lName": signUpData.lastName,
+      "gender": signUpData.gender,
+      "dob": signUpData.dob
+    };
+    const result = await register(body);
+    localStorage.setItem('user', JSON.stringify(result.user));
+    localStorage.setItem('token', result.token);
+    navigate(-1);
   };
 
-  const handleLoginSubmit = (e) => {
+  const handleLoginSubmit = async (e) => {
     e.preventDefault();
-    // Handle login logic here
+    const body = {
+      "email": email,
+      "password": password,
+    };
+    const result = await logIn(body);
+    localStorage.setItem('user', JSON.stringify(result.user));
+    localStorage.setItem('token', result.token);
     console.log('Logging in with:', { email, password });
+    navigate(-1);
   };
 
   const handleSignUpChange = (e) => {
@@ -66,24 +87,24 @@ export default function Auth() {
                 <label className="block text-sm font-medium text-gray-700">Gender</label>
                 <div className="mt-2 space-x-4">
                   <label className="inline-flex items-center">
-                    <input 
-                      type="radio" 
-                      name="gender" 
+                    <input
+                      type="radio"
+                      name="gender"
                       value="male"
                       checked={signUpData.gender === 'male'}
                       onChange={handleSignUpChange}
-                      className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300" 
+                      className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300"
                     />
                     <span className="ml-2 text-sm text-gray-700">Male</span>
                   </label>
                   <label className="inline-flex items-center">
-                    <input 
-                      type="radio" 
-                      name="gender" 
+                    <input
+                      type="radio"
+                      name="gender"
                       value="female"
                       checked={signUpData.gender === 'female'}
                       onChange={handleSignUpChange}
-                      className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300" 
+                      className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300"
                     />
                     <span className="ml-2 text-sm text-gray-700">Female</span>
                   </label>
@@ -135,6 +156,22 @@ export default function Auth() {
                   className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 />
                 <p className="mt-1 text-xs text-gray-500">Enter date of birth in (DD-MM-YYYY) format</p>
+              </div>
+
+              <div>
+                <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+                  Password
+                </label>
+                <input
+                  id="password"
+                  name="password"
+                  type="password"
+                  autoComplete="current-password"
+                  required
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                />
               </div>
 
               <div>
@@ -221,7 +258,7 @@ export default function Auth() {
             </form>
 
             <div className="mt-6 text-center">
-              <button 
+              <button
                 onClick={() => setIsSignUp(false)}
                 className="text-sm text-brandBlue hover:text-indigo-500"
               >
@@ -344,7 +381,7 @@ export default function Auth() {
 
           {isExistingUser === null && (
             <div className="mt-6 text-center">
-              <button 
+              <button
                 onClick={() => setIsSignUp(true)}
                 className="text-sm text-indigo-600 hover:text-indigo-500"
               >

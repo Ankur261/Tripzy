@@ -2,8 +2,7 @@ import { useState } from "react";
 import ResultNavbar from '../../components/navbar/resultNavbar'
 import { useEffect } from "react";
 import { getFlightList } from "../../services/flights";
-import { useLocation } from 'react-router-dom';
-import { useNavigate } from "react-router-dom";
+import { useLocation,useNavigate } from 'react-router-dom';
 
 export default function FlightResult() {
   const navigate = useNavigate();
@@ -80,7 +79,7 @@ export default function FlightResult() {
                   <div className="cursor-pointer  bg-blue-50 rounded-lg p-4 w-full md:w-auto text-center hover:bg-blue-100" onClick={() => {
                     navigate("/traveller-details", { state: { fromCity: fromCity, toCity: toCity, travellerCount: travellerCount, selectedDate: selectedDate, flightDetails: value, isEco: false } });
                   }}>
-                    <span className="text-xs font-semibold text-blue-700 bg-blue-100 px-2 py-1 rounded">Stretch | Business</span>
+                    <span className="text-xs font-semibold text-blue-700 px-2 py-1 rounded">Stretch | Business</span>
                     <p className="text-lg font-semibold text-gray-900 mt-2">₹{value.businessPrice*travellerCount}</p>
                     <p className="text-sm text-green-600">+ Earn {(value.businessPrice*travellerCount)/10} Tripzy Points</p>
                   </div>

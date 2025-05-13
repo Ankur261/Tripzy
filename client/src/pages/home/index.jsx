@@ -12,6 +12,8 @@ import { addMonths } from 'date-fns';
 
 export default function Home({ }) {
   const navigate = useNavigate();
+  const user = JSON.parse(localStorage.getItem('user'));
+  const token = localStorage.getItem('token');
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState();
   const [isOpenFrom, setIsOpenFrom] = useState(false);
@@ -59,7 +61,7 @@ export default function Home({ }) {
       <p className="">Loading.....</p>
     </>)
   }
-  console.log(data)
+  console.log(user, token)
   return (
     <>
       <Marquee style={{ backgroundColor: '#fff8e5' }} speed={60} pauseOnHover={true} >
@@ -73,7 +75,7 @@ export default function Home({ }) {
       <div className="container mx-auto">
         <div className="mt-5">
           <h1 className="font-josefin text-[2.4rem] tracking-[-0.05rem] leading-[3.25rem]">
-            Hi there, keep flying, keep saving, keep booking on <span className="text-boldGreen">Tripzy.in</span>
+            {token ? `Hi ${user.fName} ${user.lName} ready for ` : "Hi there, keep flying, keep saving, keep booking on"} <span className="text-boldGreen">{token ? "adventure ?":"Tripzy.in"}</span>
           </h1>
         </div>
         <div className="rounded-xl border border-red-50 bg-white">
@@ -195,7 +197,7 @@ export default function Home({ }) {
             </div>
           </div>
           <div onClick={() => {
-            navigate("/flight-result", { state: { fromCity: fromCity, toCity: toCity, travellerCount: travellerCount, selectedDate:selectedDate } });
+            navigate("/flight-result", { state: { fromCity: fromCity, toCity: toCity, travellerCount: travellerCount, selectedDate: selectedDate } });
           }} className="flex flex-row justify-center h-100 mb-3 cursor-pointer">
             <p className="font-bold bg-brandBlue px-5 py-1 rounded-full text-white">Search</p>
           </div>
