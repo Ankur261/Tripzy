@@ -72,14 +72,14 @@ export default function Auth() {
       <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
           <div className="text-center">
-            <h1 className="text-3xl font-bold text-indigo-600">IndiGo <span className="text-blue-800">BluChip.</span></h1>
+            <h1 className="text-3xl font-bold text-indigo-600">Tripzy <span className="text-blue-800">Points.</span></h1>
             <p className="mt-2 text-sm text-gray-600">The most hassle-free, on-time loyalty program.</p>
           </div>
 
           <div className="mt-8  py-8 px-4 shadow sm:rounded-lg sm:px-10">
-            <h2 className="text-xl font-semibold text-gray-800 mb-6">Welcome to IndiGo BluChip!</h2>
+            <h2 className="text-xl font-semibold text-gray-800 mb-6">Welcome to Tripzy!</h2>
             <p className="text-sm text-gray-600 mb-6">
-              Experience a rewarding journey as an IndiGo BluChip Member. The name in your IndiGo BluChip Account should match your government ID. IndiGo BluChips will be credited only if the name in your IndiGo BluChip Account is an exact match with the flight booking name.
+              Experience a rewarding journey as an Tripzy Member. The name in your Tripzy Account should match your government ID.
             </p>
 
             <form className="space-y-6" onSubmit={handleSignUpSubmit}>
@@ -204,7 +204,7 @@ export default function Auth() {
                   </div>
                   <div className="ml-3 text-sm">
                     <label htmlFor="agreeTerms" className="font-medium text-gray-700">
-                      I agree to the TERMS AND CONDITIONS of the IndiGo BluChip Program
+                      I agree to the TERMS AND CONDITIONS.
                     </label>
                   </div>
                 </div>
@@ -241,7 +241,7 @@ export default function Auth() {
                   </div>
                   <div className="ml-3 text-sm">
                     <label htmlFor="receiveOffers" className="font-medium text-gray-700">
-                      I would like to receive the latest offers and deals from IndiGo and its partners. I can opt-out of the marketing communications at any time.
+                      I would like to receive the latest offers and deals from Tripzy and its partners. I can opt-out of the marketing communications at any time.
                     </label>
                   </div>
                 </div>
@@ -258,12 +258,12 @@ export default function Auth() {
             </form>
 
             <div className="mt-6 text-center">
-              <button
+              <div
                 onClick={() => setIsSignUp(false)}
-                className="text-sm text-brandBlue hover:text-indigo-500"
+                className="cursor-pointer text-sm text-brandBlue bg-white hover:text-indigo-500"
               >
                 Already have an account? Login
-              </button>
+              </div>
             </div>
           </div>
         </div>
@@ -275,13 +275,13 @@ export default function Auth() {
     <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <div className="text-center">
-          <h1 className="text-3xl font-bold text-indigo-600">IndiGo <span className="text-blue-800">BluChip.</span></h1>
+          <h1 className="text-3xl font-bold text-indigo-600">Tripzy <span className="text-blue-800">Points.</span></h1>
           <p className="mt-2 text-sm text-gray-600">The most hassle-free, on-time loyalty program.</p>
         </div>
 
         <div className="mt-8 bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
           <h2 className="text-center text-lg font-medium text-gray-900">
-            {isExistingUser === null ? 'Login or Sign up for IndiGo BluChip' : 'Welcome back!'}
+            {isExistingUser ? 'Login or Sign up for Tripzy' : 'Welcome back!'}
           </h2>
 
           {isExistingUser === null ? (
@@ -355,7 +355,7 @@ export default function Auth() {
               <div>
                 <button
                   type="submit"
-                  className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                  className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-brandBlue hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                 >
                   Login
                 </button>
@@ -383,7 +383,7 @@ export default function Auth() {
             <div className="mt-6 text-center">
               <button
                 onClick={() => setIsSignUp(true)}
-                className="text-sm text-indigo-600 hover:text-indigo-500"
+                className="text-sm bg-white text-indigo-600 hover:text-indigo-500"
               >
                 Don't have an account? Sign up
               </button>

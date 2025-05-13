@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { feedback } from '../../services/feedback';
+import Navbar from '../../components/navbar/Navbar';
 
 export default function FeedbackForm() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
@@ -11,13 +13,9 @@ export default function FeedbackForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const res = await fetch('/api/feedback', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData),
-    });
-
-    if (res.ok) {
+    const res = await feedback(formData);
+    console.log(res)
+    if (res.message === 'Feedback submitted successfully') {
       setStatus('Thank you for your feedback!');
       setFormData({ name: '', email: '', message: '' });
     } else {
@@ -26,7 +24,9 @@ export default function FeedbackForm() {
   };
 
   return (
-    <div className="bg-white py-12 px-4 sm:px-10 max-w-2xl mx-auto">
+    <>
+    <Navbar/>
+    <div className="bg-white my-10 py-12 px-4 sm:px-10 max-w-2xl mx-auto">
       <h2 className="text-3xl font-bold text-[#000099] text-center mb-6">Leave Your Feedback</h2>
       <form onSubmit={handleSubmit} className="space-y-6">
         <div>
@@ -75,5 +75,6 @@ export default function FeedbackForm() {
         {status && <p className="text-center text-sm text-[#000099] mt-4">{status}</p>}
       </form>
     </div>
+    </>
   );
 }

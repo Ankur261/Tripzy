@@ -8,6 +8,7 @@ import airportRoutes from './src/routes/airport.routes.js';
 import flightRoutes from './src/routes/flight.routes.js';
 import bookingRoutes from './src/routes/booking.routes.js';
 import authRoutes from './src/routes/auth.routes.js';
+import feedbackRoute from './src/routes/feedback.route.js'
 
 dotenv.config();
 
@@ -23,6 +24,7 @@ app.use('/api/airports', airportRoutes);
 app.use('/api/flights', flightRoutes);
 app.use('/api/bookings', bookingRoutes);
 app.use('/api/auth', authRoutes);
+app.use('/api/feedback', feedbackRoute);
 
 mongoose.connect(process.env.MONGODB_URI)
   .then(() => {

@@ -13,14 +13,15 @@ export default function Navbar() {
     <div className="h-14 flex flex-row bg-white bg-opacity-30 hover:bg-white px-10 items-center">
       <img onClick={() => { navigate("/") }} className="cursor-pointer h-12 margin-left-1" src="/assets/logo-1.png" alt="" />
       <div className="flex flex-row justify-evenly basis-4/5">
-        <NavButton buttonText={"Book"} onClick={() => {
+        <NavButton buttonText={"Home"} onClick={() => {
           navigate('/')
         }}/>
-        <NavButton buttonText={"Feedback"} />
+        <NavButton buttonText={"Feedback"} onClick={() => {
+          navigate('/feedback')
+        }}/>
         <NavButton buttonText={"About Us"} onClick={() => {
           navigate('/about-us')
         }}/>
-        <NavButton buttonText={"Tariff Sheet"} />
       </div>
       <div onClick={() => {token ? setIsDropdownOpen(!isDropdownOpen): navigate('/auth') }} className="relative bg-stone-200 h-9 px-1 flex flex-row justify-between text-black cursor-pointer items-center rounded-full">
         <div className="bg-white flex px-2 rounded-full border h-7 justify-center items-center">
