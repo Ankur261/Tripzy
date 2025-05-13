@@ -17,7 +17,9 @@ export default function Navbar() {
           navigate('/')
         }}/>
         <NavButton buttonText={"Feedback"} />
-        <NavButton buttonText={"About Us"} />
+        <NavButton buttonText={"About Us"} onClick={() => {
+          navigate('/about-us')
+        }}/>
         <NavButton buttonText={"Tariff Sheet"} />
       </div>
       <div onClick={() => {token ? setIsDropdownOpen(!isDropdownOpen): navigate('/auth') }} className="relative bg-stone-200 h-9 px-1 flex flex-row justify-between text-black cursor-pointer items-center rounded-full">

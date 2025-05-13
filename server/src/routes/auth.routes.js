@@ -61,7 +61,6 @@ router.post('/login', async (req, res) => {
 
 // Register route with password hashing
 router.post('/register', async (req, res) => {
-  console.log('asffsad')
   try {
     const { password, ...rest } = req.body;
     // Hash password

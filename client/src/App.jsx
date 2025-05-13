@@ -10,6 +10,7 @@ import { ToastContainer } from "react-toastify";
 import { PrivateRoute } from "./components/PrivateRoute";
 import BookingListPage from './pages/bookingList';
 import UserProfilePage from './pages/profile';
+import AboutUs from './pages/aboutUs';
 
 
 function App() {
@@ -21,6 +22,8 @@ function App() {
           <Route path='/' element={<Home/>} />
           <Route path='/flight-result' element={<FlightResult/>} />
           <Route path='/traveller-details' element={<TravellerDetails/>} />
+          <Route path='/about-us' element={<AboutUs/>} />
+          <Route path='/feedback' element={<TravellerDetails/>} />
           <Route path='/auth' element={<Auth/>} />
           <Route element={<PrivateRoute />}>
            <Route path='/bookings' element={<BookingListPage/>} />
