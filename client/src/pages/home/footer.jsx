@@ -1,6 +1,9 @@
 import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 export default function Footer() {
+
+  const navigate = useNavigate();
   return (
     <footer className="bg-[#00008f] text-white px-6 py-10">
       <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
@@ -17,10 +20,12 @@ export default function Footer() {
         <div>
           <h3 className="text-lg font-semibold mb-3">Company</h3>
           <ul className="space-y-2 text-sm">
-            <li><a href="/about" className="hover:underline">About Us</a></li>
-            <li><a href="/contact" className="hover:underline">Contact</a></li>
-            <li><a href="/careers" className="hover:underline">Careers</a></li>
-            <li><a href="/blog" className="hover:underline">Blog</a></li>
+            <li><a onClick={() => {
+              navigate('about-us')
+            }} className="hover:underline">About Us</a></li>
+            <li><a onClick={() => {
+              navigate('feedback')
+            }} className="hover:underline">Contact</a></li>
           </ul>
         </div>
 
